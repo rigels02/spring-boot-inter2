@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Person</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+
+<body>
+	<h1>Person Image</h1>
+	<div th:if="${errors != null}">
+		<div style="color: red" th:text="${errors}"></div>
+	</div>
+
+	<div class="w3-card-4" >
+
+		<img alt="img" th:src="@{'/view/persons/imageV/'+ ${id}}"
+			style="width: 50%; height: 50%" />
+			 
+		<div class="w3-container w3-center">
+			<p>Your Card</p>
+			<a class="w3-btn w3-blue" th:href="@{/view/persons}"> Back
+			</a>
+		</div>
+	</div>
+
+</body>
+</html>

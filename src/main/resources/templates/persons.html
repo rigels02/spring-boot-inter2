@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<meta charset="ISO-8859-1" />
+<title>Locale</title>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> 
+</head>
+<body>
+
+ <div class="w3-bar w3-black">
+  <a th:href="@{/}" class="w3-bar-item w3-hover-blue">Home</a>
+  
+</div> 
+<h1>Persons</h1>
+ <a class="w3-btn w3-green" th:href="@{/view/persons/create}" >Create</a> 
+<table class="w3-table w3-striped">
+<thead>
+<th>Id</th><th>Name</th><th>Age</th><th>Image</th>
+</thead>
+<tbody>
+	<tr th:each="person:${persons}">
+		<td th:text="${person.id}"></td>
+		<td th:text="${person.name}"></td>
+		<td th:text="${person.age}"></td>
+		<td><div th:if="${person.image!=null}"><a th:href="@{'/view/persons/image/'+ ${person.id}}">Download</a></div>
+		<div th:if="${person.image!=null}"><a th:href="@{'/view/persons/imageV/'+ ${person.id}}">View</a></div>
+		<div th:if="${person.image!=null}"><a th:href="@{'/view/persons/imageCard/'+ ${person.id}}">Card</a></div>
+		</td>
+		<td><a th:href="@{'/view/persons/'+ ${person.id}}">Edit</a></td>
+                <td><a onclick="return confirm('Delete?');" th:href="@{'/view/persons/delete/'+ ${person.id}}">Delete</a></td>
+	</tr>
+	
+</tbody>
+</table>
+
+</body>
+</html>

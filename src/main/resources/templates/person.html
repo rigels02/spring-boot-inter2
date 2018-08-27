@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Person</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> 
+    </head>
+
+    <body>
+        <h1>Person</h1>
+        <div th:if="${errors != null}">
+            <div style="color: red" th:text="${errors}"></div>
+        </div>
+        
+        <form class="w3-container" th:action="@{/view/edit/persons}" th:object="${person}" method="POST"
+        		enctype="multipart/form-data" >
+            <input class="w3-input"  type="hidden" th:field="*{id}" /><br/>
+            <input  class="w3-input"  type="text" th:field="*{name}"/><br/>
+            <input  class="w3-input" type="number" th:field="*{age}"/><br/>
+             Image File to upload: <input class="w3-input" th:field="*{fileDatas}" type="file"/><br />
+            <input class="w3-btn w3-blue" type="submit" value="Submit"/>
+        </form>
+        <hr />
+        <!-- 
+        <form th:object="${UploadForm}" method="POST"
+         th:action="@{/uploadFile}" enctype="multipart/form-data" >
+         
+         Image File to upload: <input th:field="*{fileDatas}" type="file"/>
+         <br />  
+         <input type="submit" value="Upload Image">
+      </form>
+       -->
+    </body>
+</html>
